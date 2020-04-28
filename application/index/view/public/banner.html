@@ -1,0 +1,62 @@
+<div class='mian_banner p-r'>
+<a href='javascript:void(0)' class='preBtn p-a banbtn'><i><</i></a> <a href='javascript:void(0)' class='nextBtn p-a banbtn'><i>></i></a>
+<div class='hd1 p-a'>
+<ul>
+<li></li>
+<li></li>
+<li></li>
+
+</ul>
+</div>
+<div class='bd1'>
+<ul>
+	<li>
+	<a href='/swt?xaxnmchd' target='_blank'>
+		<img src='{__Home__}images/yearzz1920x500.jpg' width='1920' height='500' class='scaleImg'/>
+	</a> 
+</li>
+<li>
+	<a href='/swt?xaxnmchd' target='_blank'>
+		<img src='{__Home__}images/yearjz1920x500.jpg' width='1920' height='500' class='scaleImg'/>
+	</a> 
+</li>
+<li>
+	<a href='/xwzx/785.html?xibei' target='_blank'>
+		<img src='{__Home__}images/furture1920X500.jpg' width='1920' height='500' class='scaleImg'/>
+	</a> 
+</li>
+
+</ul>
+</div>
+</div>
+
+<script type="text/javascript">
+	$(function () {
+	$(".mian_banner").mouseenter(function (e) {
+		$(this).find(".banbtn").fadeIn()
+	}).mouseleave(function (e) {
+		$(this).find(".banbtn").fadeOut()
+	});
+});
+//banner杞挱
+if ($(".mian_banner li").length > 1) {
+	$(".mian_banner").slide({
+		mainCell: '.bd1 ul',
+		titCell: '.hd1 li',
+		effect: 'left',
+	     prevCell: '.preBtn',
+		 nextCell: '.nextBtn',
+		autoPage: 'false',
+		autoPlay: true,
+		mouseOverStop: true,
+		titOnClassName: 'active',
+		interTime: 9000,
+		delayTime: 800,
+		playStateCell:'.pauseState',
+		endFun: function (i, c) {				
+			$(".mian_banner .bd1 li").removeClass("active").eq(i).addClass("active");
+			
+		},
+	});
+}
+</script>

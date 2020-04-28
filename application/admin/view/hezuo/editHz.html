@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+		<!-- Google Chrome Frame也可以让IE用上Chrome的引擎: -->
+		<meta name="renderer" content="webkit">
+		<!--国产浏览器高速模式-->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- 定义页面的最新版本 -->
+		<meta name="description" content="" />
+		<!-- 网站简介 -->
+		<meta name="keywords" content="" />
+		<title>更改信息</title>
+		<!-- 公共样式 开始 -->
+		<link rel="stylesheet" type="text/css" href="{__Home__}admin/css/base.css">
+		<link rel="stylesheet" type="text/css" href="{__Home__}admin/css/iconfont.css">
+		<script type="text/javascript" src="{__Home__}admin/framework/jquery-1.11.3.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="{__Home__}admin/layui/css/layui.css">
+		<script type="text/javascript" src="{__Home__}admin/layui/layui.js"></script>
+		<!-- 滚动条插件 -->
+		<link rel="stylesheet" type="text/css" href="{__Home__}admin/css/jquery.mCustomScrollbar.css">
+		<script src="{__Home__}admin/framework/jquery-ui-1.10.4.min.js"></script>
+		<script src="{__Home__}admin/framework/jquery.mousewheel.min.js"></script>
+		<script src="{__Home__}admin/framework/jquery.mCustomScrollbar.min.js"></script>
+		<script src="{__Home__}admin/framework/cframe.js"></script><!-- 仅供所有子页面使用 -->
+		<!-- 公共样式 结束 -->
+		
+		<style>
+			.layui-form-label{
+				width: 100px;
+			}
+			.layui-input-block{
+				margin-left: 130px;
+			}
+			.layui-form{
+				margin-right: 30%;
+			}
+		</style>
+
+	</head>
+
+	<body>
+		<div class="cBody">
+			<form class="layui-form" method="post" enctype="multipart/form-data" action="{:url('Hezuo/update_info')}">
+				<div class="layui-form-item" style="display:none">
+					<label class="layui-form-label">编号</label>
+					<div class="layui-input-block">
+						<input type="text" name="id" class="layui-input" value="{$id}">
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">名称</label>
+					<div class="layui-input-block">
+						<input type="text" name="sitename" required class="layui-input" value="{$sitename}">
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">logo</label>
+					<div class="layui-input-block">
+					  <input type="file" name="file">
+					  <div><img src="http://localhost/tp5/public/uploads/{$logo}"></div>
+					</div>
+					
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">链接</label>
+					<div class="layui-input-block">
+						<input type="text" name="sitelink" required class="layui-input" value="{$sitelink}">
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">地址</label>
+					<div class="layui-input-block">
+						<input type="text" name="address" required  class="layui-input" value="{$address}">
+					</div>
+				</div>
+				
+				
+				<div class="layui-form-item">
+					<div class="layui-input-block">
+						<button class="layui-btn" lay-submit lay-filter="formDemo">保存</button>
+					</div>
+				</div>
+			</form>
+
+            
+		</div>
+	</body>
+    
+</html>

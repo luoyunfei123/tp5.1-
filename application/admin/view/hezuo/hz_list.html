@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+		<!-- Google Chrome Frame也可以让IE用上Chrome的引擎: -->
+		<meta name="renderer" content="webkit">
+		<!--国产浏览器高速模式-->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="author" content="" />
+		<!-- 作者 -->
+		<meta name="revised" content="" />
+		<!-- 定义页面的最新版本 -->
+		<meta name="description" content="网站简介" />
+		<!-- 网站简介 -->
+		<meta name="keywords" content="搜索关键字，以半角英文逗号隔开" />
+		<title>合作列表</title>
+
+		<!-- 公共样式 开始 -->
+		<link rel="stylesheet" type="text/css" href="{__Home__}admin/css/base.css">
+		<link rel="stylesheet" type="text/css" href="{__Home__}admin/css/iconfont.css">
+		<script type="text/javascript" src="{__Home__}admin/framework/jquery-1.11.3.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="{__Home__}admin/layui/css/layui.css">
+		<script type="text/javascript" src="{__Home__}admin/layui/layui.js"></script>
+		<!-- 滚动条插件 -->
+		<link rel="stylesheet" type="text/css" href="{__Home__}admin/css/jquery.mCustomScrollbar.css">
+		<script src="{__Home__}admin/framework/jquery-ui-1.10.4.min.js"></script>
+		<script src="{__Home__}admin/framework/jquery.mousewheel.min.js"></script>
+		<script src="{__Home__}admin/framework/jquery.mCustomScrollbar.min.js"></script>
+		<script src="{__Home__}admin/framework/cframe.js"></script><!-- 仅供所有子页面使用 -->
+		<!-- 公共样式 结束 -->
+		
+		<style>
+			.layui-table img {
+			    max-width: none;
+			}
+		</style>
+
+	</head>
+
+	<body>
+		<div class="cBody">
+			<div class="console">
+				<form class="layui-form" action="">
+					<div class="layui-form-item">
+						<div class="layui-input-inline">
+							<input type="text" name="name" required lay-verify="required" placeholder="输入合作名称" autocomplete="off" class="layui-input">
+						</div>
+						
+						<button class="layui-btn" lay-submit lay-filter="formDemo">检索</button>
+					</div>
+				</form>
+
+				<script>
+					layui.use('form', function() {
+						var form = layui.form;
+				
+						//监听提交
+						form.on('submit(formDemo)', function(data) {
+							layer.msg(JSON.stringify(data.field));
+							return false;
+						});
+					});
+				</script>
+			</div>
+			
+			<table class="layui-table">
+				<thead>
+					<tr>
+						<th>合作名称</th>
+						<th>合作图片</th>
+						
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					 {foreach name='list' item='vo'}
+					<tr>
+						<td>{$vo.sitename}</td>
+						<td><img src="http://localhost/tp5/public/uploads/{$vo.logo}" width="150" height="60"/></td>
+						
+						<td>
+							<a href="{:url('Hezuo/editHz')}?id={$vo.id}"><button class="layui-btn layui-btn-xs">修改</button></a>
+							<button class="layui-btn layui-btn-xs" onclick="delBut({$vo.id})">删除</button>
+						</td>
+					</tr>
+					{/foreach}
+					
+					
+				</tbody>
+			</table>
+			
+			
+		</div>
+		<script type="text/javascript">
+			function delBut(id){
+              var num=id;
+              $.ajax({
+			     type:"post",
+			     url:"{:url('Hezuo/delHz')}",  //数据传输的控制器方法
+			     data:{num:num},//这里data传递过去的是序列化以后的字符串
+			     success:function(data){
+			     	//alert(data);
+			      if(data=="0"){
+			      	alert("删除成功!");
+			      	window.location.href="http://localhost/tp5/public/index.php/admin/hezuo/hz_list";
+			      }else{
+			      	alert("删除失败!");
+			      	window.location.href="http://localhost/tp5/public/index.php/admin/hezuo/hz_add";
+			      }
+			      
+			     }
+			    });
+			}
+
+			
+		</script>
+	</body>
+
+</html>
